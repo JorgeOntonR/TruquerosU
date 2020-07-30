@@ -8,15 +8,15 @@
                     
                 </b-col>
                 <b-col >
-                    <b-form inline id="formDistintivo">
+                    <!--<b-form inline id="formDistintivo">
                         {{distintivo}}
                         <b-form-input
                             id="input-2"
                             v-model="distintivo"
                             placeholder="Pega tu distintivo Aqui"
                         ></b-form-input>
-                        <!--<b-button v-on:click="guardarDistintivo" variant="primary">Subir</b-button>-->
-                    </b-form>
+                        <b-button v-on:click="guardarDistintivo" variant="primary">Subir</b-button>
+                    </b-form>-->
                     <b-list-group >
                         <b-list-group-item button v-on:click="abrirDinamica('acrosticoCruzado')">ACRÓSTICO CRUZADO</b-list-group-item>
                         <b-list-group-item button v-on:click="abrirDinamica('stop')">STOP</b-list-group-item>
@@ -609,7 +609,7 @@ export default {
       },
       mayus(id) {
             if(id==='acrosticoCruzado'){
-                this.acrosticoCruzado.entradaTexto = this.acrosticoCruzado.entradaTexto.toUpperCase();
+                //this.acrosticoCruzado.entradaTexto = this.acrosticoCruzado.entradaTexto.toUpperCase();
                 let caracteres = this.acrosticoCruzado.entradaTexto.split("");
                 for(let i=0;i<caracteres.length;i++){
                     if(caracteres[i]=== 'Á'){
@@ -668,24 +668,39 @@ export default {
                 this.realizarEscaleraMagica();
             }
             if(id==="parsel"){
-                this.parsel.entradaTexto = this.parsel.entradaTexto.toUpperCase();
+                //this.parsel.entradaTexto = this.parsel.entradaTexto.toUpperCase();
                 let caracteres = this.parsel.entradaTexto.split("");
                 for(let i=0;i<caracteres.length;i++){
                     if(caracteres[i]=== 'Á'){
                         caracteres[i] = 'A';
-                    }
+                    } else if(caracteres[i] === 'á')
+                        {
+                            caracteres[i] = 'a';
+                        }
                     if(caracteres[i]=== 'É'){
                         caracteres[i] = 'E';
-                    }
+                    } else if(caracteres[i] === 'é')
+                        {
+                            caracteres[i] = 'e';
+                        }
                     if(caracteres[i]=== 'Í'){
                         caracteres[i] = 'I';
-                    }
+                    } else if(caracteres[i] === 'í')
+                        {
+                            caracteres[i] = 'i';
+                        }
                     if(caracteres[i]=== 'Ó'){
                         caracteres[i] = 'O';
-                    }
+                    } else if(caracteres[i] === 'ó')
+                        {
+                            caracteres[i] = 'o';
+                        }
                     if(caracteres[i]=== 'Ú'){
                         caracteres[i] = 'U';
-                    }
+                    } else if(caracteres[i] === 'ú')
+                        {
+                            caracteres[i] = 'u';
+                        }
                 }
                 let sinTildes = caracteres.toString().replace(/,/g, '');
                 this.parsel.entradaTexto = sinTildes;
